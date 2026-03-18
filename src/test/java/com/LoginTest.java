@@ -11,7 +11,7 @@ public class LoginTest {
 
     @Test
     void showThePageTitle () {
-        Playwright playwright = Playwright.create();  //Aquí "enciendes" el motor de Playwright. Arranca el proceso subyacente que permite a Java comunicarse con los navegadores.
+        Playwright playwright = Playwright.create();
         Browser browser = playwright.chromium().launch(
             new BrowserType.LaunchOptions()
                 .setHeadless(false) // false = no seas invisible, ¡muéstrate!
@@ -40,7 +40,6 @@ public class LoginTest {
         );
         Page page = browser.newPage();
 
-        //1. navegamos a la página de login
         page.navigate("https://www.saucedemo.com/");
 
         //2. rellenamos el usuario, esta es una forma de hacerlo
@@ -49,8 +48,13 @@ public class LoginTest {
         //3. rellenamos la contraseña, esta es otra forma de hacerlo
         page.locator("#password").fill("secret_sauce");     
 
-        //4. hacemos click en el botón de login
         page.locator("#login-button").click();
+    
+        page.locator("#add-to-cart-sauce-labs-backpack").click();
+
+        page.locator(".shopping_cart_link").click();
+
+        page.locator(".cart_button").click();
 
         browser.close();
         playwright.close();
