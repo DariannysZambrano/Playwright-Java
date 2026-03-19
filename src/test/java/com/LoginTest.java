@@ -1,54 +1,44 @@
 package com;
 
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
+import com.microsoft.playwright.junit.Options;
+import com.microsoft.playwright.junit.OptionsFactory;
+import com.microsoft.playwright.junit.UsePlaywright;
 
+
+    @UsePlaywright(LoginTest.MisOpciones.class)
 public class LoginTest {
 
-    Playwright playwright;
-    Browser browser;
-    Page page;
 
-    @BeforeEach
-    void setup(){
-
-        playwright = Playwright.create();
-        browser = playwright.chromium().launch(
-            new BrowserType.LaunchOptions()
-                .setHeadless(false) // false = no seas invisible, ¡muéstrate!
-                .setSlowMo(1500)    // Pausa 1.5 segundos (1500 milisegundos) entre cada acción
+    public static class MisOpciones implements OptionsFactory{
+        @Override
+        public Options getOptions() {
+            return new Options()
+            .setLaunchOptions(new BrowserType.LaunchOptions()
+                .setHeadless(false)
+                .setSlowMo(1500)
         );
-        page = browser.newPage();
+
+        }
     }
 
-
-    @AfterEach
-    void teardown(){
-        browser.close();
-        playwright.close();
-    }
-    
     @Test
-    void showThePageTitle () {
+    void showThePageTitle (Page page) {
 
         page.navigate("https://www.saucedemo.com/");
         String title = page.title();
 
         Assertions.assertThat(title).contains("Swag Labs");
 
-        browser.close();
-        playwright.close();
-
     }
 
     @Test
-    void loginWithValidCredentials () {
+    void loginWithValidCredentials (Page page) {
 
         page.navigate("https://www.saucedemo.com/");
 
@@ -59,12 +49,10 @@ public class LoginTest {
         page.locator("#password").fill("secret_sauce");     
 
         page.locator("#login-button").click();
-    
-        page.locator("#add-to-cart-sauce-labs-backpack").click();
 
         page.locator(".shopping_cart_link").click();
 
-        page.locator(".cart_button").click();
+        page.locator("#checkout").click();
 
     }
 }

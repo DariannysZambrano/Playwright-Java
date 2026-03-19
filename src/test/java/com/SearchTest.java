@@ -22,7 +22,7 @@ public class SearchTest {
 
         page.navigate("https://practicesoftwaretesting.com/");
         page.locator("[placeholder= Buscar]").fill("pliers"); // estoy utilizando un selector css para localizar el campo de búsqueda, y luego le digo que escriba "pliers" dentro de ese campo
-        page.locator("button:has-text(Buscar)").click();
+        page.locator("button:has-text('Buscar')").click();
 
         int matchingSearchResults = page.locator(".card").count();
 
