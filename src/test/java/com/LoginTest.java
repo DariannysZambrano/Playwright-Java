@@ -1,8 +1,10 @@
 package com;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import com.microsoft.playwright.Browser;
+import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
@@ -14,7 +16,21 @@ import com.microsoft.playwright.junit.UsePlaywright;
     @UsePlaywright(LoginTest.MisOpciones.class)
 public class LoginTest {
 
+    private static Browser browser;
+    private static Page page;
+    private static BrowserContext context;
 
+    @BeforeAll
+    static void launchBrowser(Playwright playwright) {
+        browser = playwright.chromium().launch(new BrowserType.LaunchOptions()
+            .setHeadless(false)
+            .setSlowMo(1500));
+        
+        // Creamos un solo contexto y una sola página
+        context = browser.newContext();
+        page = context.newPage();
+    }
+    
     public static class MisOpciones implements OptionsFactory{
         @Override
         public Options getOptions() {
@@ -57,6 +73,6 @@ public class LoginTest {
     }
 }
 
-
+                
 
 

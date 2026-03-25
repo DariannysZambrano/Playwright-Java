@@ -1,4 +1,54 @@
 -------------------------------------------------------------------------------
 Test set: com.SearchTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.26 s -- in com.SearchTest
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 44.18 s <<< FAILURE! -- in com.SearchTest
+com.SearchTest.buscarMenuCategorias -- Time elapsed: 39.60 s <<< ERROR!
+com.microsoft.playwright.TimeoutError: 
+Error {
+  message='Timeout 30000ms exceeded.
+  name='TimeoutError
+  stack='TimeoutError: Timeout 30000ms exceeded.
+    at ProgressController.run (C:\Users\DARIAN~1.ZAM\AppData\Local\Temp\playwright-java-2484935710421327089\package\lib\server\progress.js:78:26)
+    at Frame.click (C:\Users\DARIAN~1.ZAM\AppData\Local\Temp\playwright-java-2484935710421327089\package\lib\server\frames.js:1013:23)
+    at FrameDispatcher.click (C:\Users\DARIAN~1.ZAM\AppData\Local\Temp\playwright-java-2484935710421327089\package\lib\server\dispatchers\frameDispatcher.js:157:30)
+    at FrameDispatcher._handleCommand (C:\Users\DARIAN~1.ZAM\AppData\Local\Temp\playwright-java-2484935710421327089\package\lib\server\dispatchers\dispatcher.js:94:40)
+    at DispatcherConnection.dispatch (C:\Users\DARIAN~1.ZAM\AppData\Local\Temp\playwright-java-2484935710421327089\package\lib\server\dispatchers\dispatcher.js:361:39)
+}
+Call log:
+- waiting for getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName(" Categorías "))
+
+	at com.microsoft.playwright.impl.WaitableResult.get(WaitableResult.java:52)
+	at com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:120)
+	at com.microsoft.playwright.impl.Connection.sendMessage(Connection.java:130)
+	at com.microsoft.playwright.impl.ChannelOwner.sendMessage(ChannelOwner.java:106)
+	at com.microsoft.playwright.impl.FrameImpl.clickImpl(FrameImpl.java:252)
+	at com.microsoft.playwright.impl.FrameImpl.lambda$click$8(FrameImpl.java:243)
+	at com.microsoft.playwright.impl.LoggingSupport.lambda$withLogging$0(LoggingSupport.java:36)
+	at com.microsoft.playwright.impl.LoggingSupport.withLogging(LoggingSupport.java:47)
+	at com.microsoft.playwright.impl.ChannelOwner.withLogging(ChannelOwner.java:89)
+	at com.microsoft.playwright.impl.LoggingSupport.withLogging(LoggingSupport.java:35)
+	at com.microsoft.playwright.impl.FrameImpl.click(FrameImpl.java:243)
+	at com.microsoft.playwright.impl.LocatorImpl.click(LocatorImpl.java:160)
+	at com.microsoft.playwright.Locator.click(Locator.java:2406)
+	at com.SearchTest.buscarMenuCategorias(SearchTest.java:54)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+Caused by: com.microsoft.playwright.TimeoutError: Error {
+  message='Timeout 30000ms exceeded.
+  name='TimeoutError
+  stack='TimeoutError: Timeout 30000ms exceeded.
+    at ProgressController.run (C:\Users\DARIAN~1.ZAM\AppData\Local\Temp\playwright-java-2484935710421327089\package\lib\server\progress.js:78:26)
+    at Frame.click (C:\Users\DARIAN~1.ZAM\AppData\Local\Temp\playwright-java-2484935710421327089\package\lib\server\frames.js:1013:23)
+    at FrameDispatcher.click (C:\Users\DARIAN~1.ZAM\AppData\Local\Temp\playwright-java-2484935710421327089\package\lib\server\dispatchers\frameDispatcher.js:157:30)
+    at FrameDispatcher._handleCommand (C:\Users\DARIAN~1.ZAM\AppData\Local\Temp\playwright-java-2484935710421327089\package\lib\server\dispatchers\dispatcher.js:94:40)
+    at DispatcherConnection.dispatch (C:\Users\DARIAN~1.ZAM\AppData\Local\Temp\playwright-java-2484935710421327089\package\lib\server\dispatchers\dispatcher.js:361:39)
+}
+Call log:
+- waiting for getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName(" Categorías "))
+
+	at com.microsoft.playwright.impl.Connection.dispatch(Connection.java:254)
+	at com.microsoft.playwright.impl.Connection.processOneMessage(Connection.java:211)
+	at com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:118)
+	... 15 more
+

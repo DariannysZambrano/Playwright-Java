@@ -1,35 +1,72 @@
 package com;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
+import com.microsoft.playwright.options.AriaRole;
 
 public class SearchTest {
     
-    @Test
-    void search () {
-        Playwright playwright = Playwright.create();
-        Browser browser = playwright.chromium().launch(
+    Playwright playwright;
+    Browser browser;
+    Page page;
+
+    @BeforeEach
+    void setUp() {
+        playwright = Playwright.create();
+        browser = playwright.chromium().launch(
             new BrowserType.LaunchOptions()
                 .setHeadless(false)
-                .setSlowMo(1500)    
+                .setSlowMo(1500) 
+                
         );
-        Page page = browser.newPage();
-
+        
+        page = browser.newPage();
         page.navigate("https://practicesoftwaretesting.com/");
-        page.locator("[placeholder= Buscar]").fill("pliers"); // estoy utilizando un selector css para localizar el campo de búsqueda, y luego le digo que escriba "pliers" dentro de ese campo
-        page.locator("button:has-text('Buscar')").click();
+    }
 
-        int matchingSearchResults = page.locator(".card").count();
-
-        Assertions.assertTrue(matchingSearchResults > 0);
-
+    @AfterEach
+    void closeAll() {
         browser.close();
         playwright.close();
+    }
 
-    }    
+    
+    //1. ejercicio verificar el nombre del logo 
+    @Test
+    void verificarTitulo() {
+        //obtener titulo  
+        String titulo = page.title();
+        //verificar titulo 
+        Assertions.assertEquals("Practice Software Testing - Toolshop - v5.0", titulo);
+    }
+
+    //2. ejercicio buscar menu de categorias
+    @Test
+    void buscarMenuCategorias() {
+        //ubicarnos en categorias
+        page.locator("[data-test=\"nav-categories\"]").click();
+        //seleccionar categoria Hand Tools
+        page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Herramientas manuales")).click();
+        //verificar heading
+        String h2Text = page.locator("h2").textContent();
+        Assertions.assertTrue(h2Text.contains("Categoría: Hand Tools"));
+    }
+
+    //3. ejercicio buscar con placeholder
+    @Test
+    void buscarHammers(){
+        page.getByPlaceholder("Buscar").fill("HAMMER");
+        page.locator("[data-test=\"search-submit\"]").click();
+        Integer countTarget = page.locator(".card").count();
+        Assertions.assertTrue(countTarget > 1,"" + countTarget);
+    }
+
+
 }
