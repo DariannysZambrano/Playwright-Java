@@ -68,5 +68,20 @@ public class SearchTest {
         Assertions.assertTrue(countTarget > 1,"" + countTarget);
     }
 
+    //4. ejercicio verificar que el login no se puede hacer sin crar una cuenta primero
+    @Test
+    void inicioDeseccionIncorrecto(){
+        page.locator("[data-test=\"nav-sign-in\"]").click();
+        page.getByLabel("Dirección de correo electrónico *").fill("DaRy@gmail.com");
+        page.getByLabel("Contraseña *").fill("12345678");
+        page.locator("[data-test=\"login-submit\"]").click();
+
+        String errorMessage = page.locator("[data-test=\"login-error\"]").textContent();
+        Assertions.assertEquals("Invalid email or password", errorMessage);
+    }
+    
+
+
+
 
 }
