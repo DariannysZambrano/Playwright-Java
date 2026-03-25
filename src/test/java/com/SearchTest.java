@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;
+import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import com.microsoft.playwright.options.AriaRole;
@@ -79,9 +80,27 @@ public class SearchTest {
         String errorMessage = page.locator("[data-test=\"login-error\"]").textContent();
         Assertions.assertEquals("Invalid email or password", errorMessage);
     }
-    
 
+    //5. verificar icono rojo del carrito de compras
+    @Test
+    void validacionToolTips(){
+        page.locator("[data-test=\"product-01KMK9AMJ0TB7WTQQRSHS9Y27N\"]").click();
 
+        Locator botonSuma = page.locator("[data-test=\"increase-quantity\"]");
+        for(int i = 0; i < 2; i++){
+            botonSuma.click();
+        }
 
+        page.locator("[data-test='add-to-cart']").click();
+
+        Locator cantidadCarrito = page.locator("[data-test='cart-quantity']");
+
+        cantidadCarrito.waitFor();
+
+        Assertions.assertTrue(page.locator("[data-test=\"cart-quantity\"]").isVisible());
+
+        Assertions.assertEquals("3", cantidadCarrito);
+
+    }
 
 }

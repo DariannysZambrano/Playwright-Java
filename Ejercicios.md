@@ -8,7 +8,7 @@ EJERCICIOS PLAYWRIGHT
     
 4. **Simulación de Login (Fallo):** Ve a la sección de "Sign in". Intenta loguearte con un correo y contraseña aleatorios. Usa `getByLabel` para encontrar los campos. Verifica que aparezca el mensaje de error "Invalid email or password" usando `getByText`.
     
-5. **Validación de Tooltips:** Busca algún icono en la página que tenga un atributo `title` (como el botón de favoritos o el carrito). Usa `getByTitle` para validar que el texto del tooltip sea el correcto.
+5. **validar icono de cantidad de productos del carrito** agregar al carrito un producto de la pagina principal y verificar que salga el contador del carrito.
 
 6. **Filtros Dinámicos:** Selecciona un rango de precio en el slider lateral y marca una marca (brand) específica. Verifica que los productos mostrados correspondan a esa marca.
     
