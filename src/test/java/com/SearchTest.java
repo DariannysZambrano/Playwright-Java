@@ -84,7 +84,7 @@ public class SearchTest {
     //5. verificar icono rojo del carrito de compras
     @Test
     void validacionToolTips(){
-        page.locator("[data-test=\"product-01KMK9AMJ0TB7WTQQRSHS9Y27N\"]").click();
+        page.locator("[data-test=\"product-01KMKG6BH4G65RPH7APEY7K66H\"]").click();
 
         Locator botonSuma = page.locator("[data-test=\"increase-quantity\"]");
         for(int i = 0; i < 2; i++){
@@ -92,15 +92,19 @@ public class SearchTest {
         }
 
         page.locator("[data-test='add-to-cart']").click();
-
         Locator cantidadCarrito = page.locator("[data-test='cart-quantity']");
-
         cantidadCarrito.waitFor();
-
         Assertions.assertTrue(page.locator("[data-test=\"cart-quantity\"]").isVisible());
+        Assertions.assertEquals("3", cantidadCarrito.innerText().trim());
 
-        Assertions.assertEquals("3", cantidadCarrito);
+    }
 
+    //6. Seleccionar una marca y verificar que todas las cards sean de esa marca en especifico
+    @Test
+    void filtrarPorMarca(){ 
+
+    
+        // en este ejercicio debo de aprneder sobre anidamientos. 
     }
 
 }
