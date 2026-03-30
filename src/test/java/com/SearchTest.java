@@ -5,6 +5,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.filter;
+
+import java.util.List;
+
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Locator;
@@ -28,6 +33,7 @@ public class SearchTest {
                 
         );
         
+        playwright.selectors().setTestIdAttribute("data-test");
         page = browser.newPage();
         page.navigate("https://practicesoftwaretesting.com/");
     }
@@ -99,12 +105,39 @@ public class SearchTest {
 
     }
 
-    //6. Seleccionar una marca y verificar que todas las cards sean de esa marca en especifico
+    //6. primera vez probando un filtro dinamico. Seleccionar una marca y verificar que todas las cards sean de esa marca en especifico
     @Test
-    void filtrarPorMarca(){ 
+    void filtrarPorMarcaYPrecio(){
+        //aqui va el codigo para el slider
 
-    
-        // en este ejercicio debo de aprneder sobre anidamientos. 
+        page.locator(".checkbox");
+        page.locator("[data-test=\"brand-01KMR3TESBYQMTA8GVW2XA1NGV\"]").check();
+        Locator cards = page.locator(".card");
+
+        for(int i = 0; i < cards.count(); i++){
+            cards.nth(i).click();
+
+        }
+
+        }
+
+    //ejercicio extra del curso
+    @Test
+    void searchForPliers(){
+        page.getByPlaceholder("Buscar").fill("pliers");
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Buscar")).click();
+
+        assertThat(page.locator(".card").count()).isEqualTo(4);
+
+        List<String> productNames = page.getByTestId("product-name").allTextContents();
+        assertThat(productNames).allMatch(name -> name.contains("Pliers"));
+
+        Locator outOfStockItemsLocator = page.locator(".card").filter(new Locator.FilterOptions().setHasText("Out of stock"))
+            .getByTestId("product-name");
+
+            assertThat(outOfStockItemsLocator.count()).isEqualTo(1);
+            assertThat(outOfStockItemsLocator.innerText()).contains("Long Nose Pliers");
+
     }
 
 }

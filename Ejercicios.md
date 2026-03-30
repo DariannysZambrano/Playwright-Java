@@ -12,10 +12,8 @@ EJERCICIOS PLAYWRIGHT
 
 6. **Filtros Dinámicos:** Selecciona un rango de precio en el slider lateral y marca una marca (brand) específica. Verifica que los productos mostrados correspondan a esa marca.
     
-7. **El Carrito de Compras:** Entra en el detalle de un producto, aumenta la cantidad a 3 unidades y añádelo al carrito. Ve al carrito y verifica que el subtotal sea correcto ($Precio \times 3$).
+7. **Formulario de Contacto:** Completa el formulario de "Contact" usando todos los localizadores aprendidos. Valida que tras enviar, aparezca el mensaje de éxito.
     
-8. **Formulario de Contacto:** Completa el formulario de "Contact" usando todos los localizadores aprendidos. Valida que tras enviar, aparezca el mensaje de éxito.
+8. **Persistencia de Sesión (Reto):** Crea un test donde te loguees con una cuenta válida, extraigas el `storageState` y verifiques que en una nueva `Page` (dentro del mismo contexto) sigues logueado sin escribir la clave.
     
-9. **Persistencia de Sesión (Reto):** Crea un test donde te loguees con una cuenta válida, extraigas el `storageState` y verifiques que en una nueva `Page` (dentro del mismo contexto) sigues logueado sin escribir la clave.
-    
-10. **E2E Completo:** Realiza el flujo completo: Login -> Buscar producto -> Añadir al carrito -> Checkout -> Pago -> Confirmación de orden.
+9. **E2E Completo:** Realiza el flujo completo: Login -> Buscar producto -> Añadir al carrito -> Checkout -> Pago -> Confirmación de orden.
