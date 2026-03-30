@@ -1,4 +1,4 @@
-package com;
+package com.Tests;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;

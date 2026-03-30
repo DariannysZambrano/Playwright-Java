@@ -1,0 +1,5 @@
+com\Tests\LoginTest.class
+com\config\SetUpPlaywright.class
+com\Tests\SearchTest.class
+com\Tests\LoginTest$MisOpciones.class
+com\Tests\FormTest.class
