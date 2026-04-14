@@ -37,8 +37,7 @@ public class GetProductsTest {
     // get
 
     public static List<String> obtenerNombresProductos(APIRequestContext request) {
-        String endpoint = "/objects";
-        APIResponse response = request.get(endpoint);
+        APIResponse response = request.get("/objects");
         JsonArray arregloJson = new Gson().fromJson(response.text(), JsonArray.class);
 
         List<String> listaDeNombres = new ArrayList<>();
@@ -58,8 +57,13 @@ public class GetProductsTest {
 
     APIResponse response = request.post("/objects", RequestOptions.create().setData(cuerpo));
 
-    Assertions.assertEquals(200, response.status(), "El servidor no respondió con éxito");
+    Assertions.assertEquals(200, response.status(), "El servidor respondió con éxito");
 
     }
 
 }
+
+
+// aplicar la libreria de Rest Assured given(), when(), then() 
+// utilizar la clase record para transportar los datos obtenidos
+// imprimir los nombres obtenidos en consola y hacerlo mas visual
