@@ -1,4 +1,4 @@
-package com.Tests;
+package com.Tests.APICourse;
 
 import org.junit.jupiter.api.BeforeAll;
 
@@ -36,15 +36,15 @@ class MakingAPIClass {
         requestContext = playwright.request().newContext(
             new APIRequest.NewContextOptions()
                 // Define la dirección principal de la API.
-                .setBaseURL("https://api.practicesoftwaretesting.com/api")
+                .setBaseURL("https://api.practicesoftwaretesting.com")
                 .setExtraHTTPHeaders(new HashMap<>() {{
                     put("Accept", "application/json");
                 }})
         );
     }
 
-    @DisplayName("Obtener productos desde la API")
-    @ParameterizedTest(name = "Producto: {0}")
+    @DisplayName("Obtener productos desde la API") //Le pone un nombre bonito y legible a la prueba en el reporte de resultados.
+    @ParameterizedTest(name = "Producto: {0}") //Indica que esta prueba se ejecutará varias veces. {0} se reemplazará por el nombre del producto que se está probando en cada iteración.
     @MethodSource("Products")
     void checkNowProducts(Product product) {
         Browser browser = playwright.chromium().launch();

@@ -1,4 +1,4 @@
-package com.Tests;
+package com.Tests.UITest;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -17,7 +17,7 @@ import com.microsoft.playwright.junit.UsePlaywright;
 public class LoginTest {
 
     private static Browser browser;
-    private static Page page;
+
     private static BrowserContext context;
 
     @BeforeAll
@@ -28,7 +28,7 @@ public class LoginTest {
         
         // Creamos un solo contexto y una sola página
         context = browser.newContext();
-        page = context.newPage();
+        Page page = context.newPage();
     }
     
     public static class MisOpciones implements OptionsFactory{

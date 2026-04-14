@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "GetProducts",
+            "request": "launch",
+            "mainClass": "com.Tests.ApiTest.GetProducts",
+            "projectName": "test-playwright"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"

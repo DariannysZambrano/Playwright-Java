@@ -1,4 +1,4 @@
-package com.Tests;
+package com.Tests.UITest;
 
 import com.microsoft.playwright.junit.UsePlaywright;
 import com.microsoft.playwright.options.AriaRole;
