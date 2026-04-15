@@ -23,7 +23,7 @@ public class GetProductsTest {
 
         try (Playwright playwright = Playwright.create()) {
             APIRequestContext requestContext = playwright.request().newContext(
-                    new APIRequest.NewContextOptions().setBaseURL("https://api.restful-api.dev"));
+                    new APIRequest.NewContextOptions().setBaseURL("https://jsonplaceholder.typicode.com/"));
 
             List<String> nombresObtenidos = obtenerNombresProductos(requestContext);
 
@@ -37,15 +37,16 @@ public class GetProductsTest {
     // get
 
     public static List<String> obtenerNombresProductos(APIRequestContext request) {
-        APIResponse response = request.get("/objects");
+        APIResponse response = request.get("/todos");
         JsonArray arregloJson = new Gson().fromJson(response.text(), JsonArray.class);
 
         List<String> listaDeNombres = new ArrayList<>();
 
-        for (int i = 0; i < 5; i++) {
-            String nombre = arregloJson.get(i).getAsJsonObject().get("name").getAsString();
+        for (int i = 0; i <= 5; i++) {
+            String nombre = arregloJson.get(i).getAsJsonObject().get("title").getAsString();
             listaDeNombres.add(nombre);
         }
+        
         return listaDeNombres;
     }
 
@@ -53,11 +54,11 @@ public class GetProductsTest {
     public static void enviarPostAbierto(APIRequestContext request, String nombreModificado) {
         Map<String, Object> cuerpo = new HashMap<>();
         cuerpo.put("name", nombreModificado);
-        cuerpo.put("data", "Registro de prueba");
 
-    APIResponse response = request.post("/objects", RequestOptions.create().setData(cuerpo));
 
-    Assertions.assertEquals(200, response.status(), "El servidor respondió con éxito");
+    APIResponse response = request.post("/todos", RequestOptions.create().setData(cuerpo));
+
+    Assertions.assertEquals(201, response.status(), "El servidor respondió con éxito");
 
     }
 
