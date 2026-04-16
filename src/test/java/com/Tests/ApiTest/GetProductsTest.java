@@ -13,25 +13,51 @@ import com.microsoft.playwright.APIResponse;
 import com.microsoft.playwright.Playwright;
 import com.microsoft.playwright.options.RequestOptions;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class GetProductsTest {
 
+    private static Playwright playwright;
+    private static APIRequestContext requestContext;
+
+    @BeforeAll
+    public static void setupRequestContext() {
+        playwright = Playwright.create();
+        requestContext = playwright.request().newContext(
+                new APIRequest.NewContextOptions().setBaseURL("https://jsonplaceholder.typicode.com/")
+        );
+    }
+
     @Test
-    public void setupRequestContext() {
+    public void validarModificacionYCreacionDeLibros(){
 
-        try (Playwright playwright = Playwright.create()) {
-            APIRequestContext requestContext = playwright.request().newContext(
-                    new APIRequest.NewContextOptions().setBaseURL("https://jsonplaceholder.typicode.com/"));
+        String tituloUsuario = "Once minutos - Paulo Coelho";
 
-            List<String> nombresObtenidos = obtenerNombresProductos(requestContext);
+        List<String> nombresObtenidos = obtenerNombresProductos(requestContext);
+        nombresObtenidos.add(tituloUsuario);
 
-            for (int i = 0; i < nombresObtenidos.size(); i++) {
-                String nombreModificado = nombresObtenidos.get(i) + " - " + (i + 1);
-                enviarPostAbierto(requestContext, nombreModificado);
+        Assertions.assertEquals(6, nombresObtenidos.size());
+
+        String ultimoRegistro = nombresObtenidos.get(nombresObtenidos.size() - 1);
+        Assertions.assertEquals(tituloUsuario, ultimoRegistro);
+
+        for (int i = 0; i < nombresObtenidos.size(); i++) {
+            String tituloAEnviar = nombresObtenidos.get(i);
+            
+            if (i < 5) {
+                tituloAEnviar = tituloAEnviar + " - " + (i + 1);
             }
+
+            enviarPostAbierto(requestContext, tituloAEnviar);
         }
+    }
+    
+    @AfterAll
+    public static void tearDown() {
+            playwright.close();
     }
 
     // get
@@ -42,7 +68,7 @@ public class GetProductsTest {
 
         List<String> listaDeNombres = new ArrayList<>();
 
-        for (int i = 0; i <= 5; i++) {
+        for (int i = 0; i < 5; i++) {
             String nombre = arregloJson.get(i).getAsJsonObject().get("title").getAsString();
             listaDeNombres.add(nombre);
         }
@@ -53,18 +79,11 @@ public class GetProductsTest {
     // metodo post
     public static void enviarPostAbierto(APIRequestContext request, String nombreModificado) {
         Map<String, Object> cuerpo = new HashMap<>();
-        cuerpo.put("name", nombreModificado);
-
+        cuerpo.put("title", nombreModificado);
 
     APIResponse response = request.post("/todos", RequestOptions.create().setData(cuerpo));
-
     Assertions.assertEquals(201, response.status(), "El servidor respondió con éxito");
 
     }
 
 }
-
-
-// aplicar la libreria de Rest Assured given(), when(), then() 
-// utilizar la clase record para transportar los datos obtenidos
-// imprimir los nombres obtenidos en consola y hacerlo mas visual
