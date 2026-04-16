@@ -41,7 +41,7 @@ public class GetProductsTest {
 
         Assertions.assertEquals(6, nombresObtenidos.size());
 
-        String ultimoRegistro = nombresObtenidos.get(nombresObtenidos.size() - 1);
+        String ultimoRegistro = nombresObtenidos.getLast();
         Assertions.assertEquals(tituloUsuario, ultimoRegistro);
 
         for (int i = 0; i < nombresObtenidos.size(); i++) {
