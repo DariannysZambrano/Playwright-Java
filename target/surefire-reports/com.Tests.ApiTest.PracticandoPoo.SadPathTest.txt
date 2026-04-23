@@ -1,0 +1,51 @@
+-------------------------------------------------------------------------------
+Test set: com.Tests.ApiTest.PracticandoPoo.SadPathTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 32.85 s <<< FAILURE! -- in com.Tests.ApiTest.PracticandoPoo.SadPathTest
+com.Tests.ApiTest.PracticandoPoo.SadPathTest.obtenerRegistroErroneoDelservidor -- Time elapsed: 27.37 s <<< ERROR!
+com.microsoft.playwright.TimeoutError: 
+Error {
+  message='Timeout 20000ms exceeded.
+  name='TimeoutError
+  stack='TimeoutError: Timeout 20000ms exceeded.
+    at ProgressController.run (C:\Users\DARIAN~1.ZAM\AppData\Local\Temp\playwright-java-6027472936444729088\package\lib\server\progress.js:78:26)
+    at Frame.waitForSelector (C:\Users\DARIAN~1.ZAM\AppData\Local\Temp\playwright-java-6027472936444729088\package\lib\server\frames.js:624:23)
+    at FrameDispatcher.waitForSelector (C:\Users\DARIAN~1.ZAM\AppData\Local\Temp\playwright-java-6027472936444729088\package\lib\server\dispatchers\frameDispatcher.js:105:103)
+    at FrameDispatcher._handleCommand (C:\Users\DARIAN~1.ZAM\AppData\Local\Temp\playwright-java-6027472936444729088\package\lib\server\dispatchers\dispatcher.js:94:40)
+    at DispatcherConnection.dispatch (C:\Users\DARIAN~1.ZAM\AppData\Local\Temp\playwright-java-6027472936444729088\package\lib\server\dispatchers\dispatcher.js:361:39)
+}
+Call log:
+- waiting for locator("[data-test='no-results']") to be visible
+
+	at com.microsoft.playwright.impl.WaitableResult.get(WaitableResult.java:52)
+	at com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:120)
+	at com.microsoft.playwright.impl.Connection.sendMessage(Connection.java:130)
+	at com.microsoft.playwright.impl.ChannelOwner.sendMessage(ChannelOwner.java:106)
+	at com.microsoft.playwright.impl.FrameImpl.waitForSelectorImpl(FrameImpl.java:1060)
+	at com.microsoft.playwright.impl.LocatorImpl.lambda$waitForImpl$7(LocatorImpl.java:619)
+	at com.microsoft.playwright.impl.LoggingSupport.withLogging(LoggingSupport.java:47)
+	at com.microsoft.playwright.impl.ChannelOwner.withLogging(ChannelOwner.java:89)
+	at com.microsoft.playwright.impl.LocatorImpl.waitForImpl(LocatorImpl.java:619)
+	at com.microsoft.playwright.impl.LocatorImpl.waitFor(LocatorImpl.java:615)
+	at com.Tests.ApiTest.PracticandoPoo.SadPathTest.obtenerRegistroErroneoDelservidor(SadPathTest.java:21)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+Caused by: com.microsoft.playwright.TimeoutError: Error {
+  message='Timeout 20000ms exceeded.
+  name='TimeoutError
+  stack='TimeoutError: Timeout 20000ms exceeded.
+    at ProgressController.run (C:\Users\DARIAN~1.ZAM\AppData\Local\Temp\playwright-java-6027472936444729088\package\lib\server\progress.js:78:26)
+    at Frame.waitForSelector (C:\Users\DARIAN~1.ZAM\AppData\Local\Temp\playwright-java-6027472936444729088\package\lib\server\frames.js:624:23)
+    at FrameDispatcher.waitForSelector (C:\Users\DARIAN~1.ZAM\AppData\Local\Temp\playwright-java-6027472936444729088\package\lib\server\dispatchers\frameDispatcher.js:105:103)
+    at FrameDispatcher._handleCommand (C:\Users\DARIAN~1.ZAM\AppData\Local\Temp\playwright-java-6027472936444729088\package\lib\server\dispatchers\dispatcher.js:94:40)
+    at DispatcherConnection.dispatch (C:\Users\DARIAN~1.ZAM\AppData\Local\Temp\playwright-java-6027472936444729088\package\lib\server\dispatchers\dispatcher.js:361:39)
+}
+Call log:
+- waiting for locator("[data-test='no-results']") to be visible
+
+	at com.microsoft.playwright.impl.Connection.dispatch(Connection.java:254)
+	at com.microsoft.playwright.impl.Connection.processOneMessage(Connection.java:211)
+	at com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:118)
+	... 12 more
+

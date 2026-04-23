@@ -2,8 +2,11 @@ C:\Users\dariannys.zambrano\Desktop\playwright\test-playwright\src\test\java\com
 C:\Users\dariannys.zambrano\Desktop\playwright\test-playwright\src\test\java\com\Tests\APICourse\Apis.java
 C:\Users\dariannys.zambrano\Desktop\playwright\test-playwright\src\test\java\com\Tests\APICourse\Domain\User.java
 C:\Users\dariannys.zambrano\Desktop\playwright\test-playwright\src\test\java\com\Tests\APICourse\Login\RegisterUserAPITest.java
-C:\Users\dariannys.zambrano\Desktop\playwright\test-playwright\src\test\java\com\Tests\ApiTest\borradorTest.java
 C:\Users\dariannys.zambrano\Desktop\playwright\test-playwright\src\test\java\com\Tests\ApiTest\GetProductsTest.java
+C:\Users\dariannys.zambrano\Desktop\playwright\test-playwright\src\test\java\com\Tests\ApiTest\PracticandoPoo\BaseTest.java
+C:\Users\dariannys.zambrano\Desktop\playwright\test-playwright\src\test\java\com\Tests\ApiTest\PracticandoPoo\prepararAPI.java
+C:\Users\dariannys.zambrano\Desktop\playwright\test-playwright\src\test\java\com\Tests\ApiTest\PracticandoPoo\PrepararUI.java
+C:\Users\dariannys.zambrano\Desktop\playwright\test-playwright\src\test\java\com\Tests\ApiTest\PracticandoPoo\SadPathTest.java
 C:\Users\dariannys.zambrano\Desktop\playwright\test-playwright\src\test\java\com\Tests\UITest\FormTest.java
 C:\Users\dariannys.zambrano\Desktop\playwright\test-playwright\src\test\java\com\Tests\UITest\LoginTest.java
 C:\Users\dariannys.zambrano\Desktop\playwright\test-playwright\src\test\java\com\Tests\UITest\SearchTest.java

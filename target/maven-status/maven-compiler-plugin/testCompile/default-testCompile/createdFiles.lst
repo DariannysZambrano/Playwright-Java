@@ -1,10 +1,10 @@
 com\Tests\APICourse\MakingAPIClass$1.class
 com\config\SetUpPlaywright.class
+com\Tests\APICourse\MakingAPIClass.class
+com\Tests\UITest\FormTest.class
+com\Tests\APICourse\Login\RegisterUserAPITest.class
 com\Tests\APICourse\MakingAPIClass$Product.class
 com\Tests\UITest\LoginTest.class
 com\Tests\APICourse\Domain\User.class
 com\Tests\UITest\SearchTest.class
-com\Tests\APICourse\MakingAPIClass.class
-com\Tests\UITest\FormTest.class
 com\Tests\UITest\LoginTest$MisOpciones.class
-com\Tests\APICourse\Login\RegisterUserAPITest.class
